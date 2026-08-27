@@ -7,185 +7,32 @@
 
     <style>
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            background: #05080d;
-            color: #d9f7ff;
-            font-family: Arial, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
         }
 
-        .container {
-            width: min(900px, 92%);
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 64px;
-            letter-spacing: 12px;
-            margin: 0 0 10px;
-            color: #8deaff;
-            text-shadow: 0 0 20px #2bbde0;
-        }
-
-        .status {
-            color: #63ff9b;
-            margin-bottom: 40px;
-            letter-spacing: 3px;
-            font-size: 13px;
-        }
-
-        .orb {
-            width: 190px;
-            height: 190px;
-            margin: 0 auto 45px;
-            border-radius: 50%;
-            border: 2px solid #4ddfff;
-            box-shadow:
-                0 0 20px #22c7e8,
-                0 0 60px rgba(34, 199, 232, 0.35),
-                inset 0 0 35px rgba(34, 199, 232, 0.25);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: pulse 3s infinite;
-        }
-
-        .orb::before {
-            content: "";
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            border: 1px solid #9cefff;
-            box-shadow: 0 0 25px #4ddfff;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.04);
-            }
-        }
-
-        .chat {
-            background: rgba(10, 18, 27, 0.9);
-            border: 1px solid #183846;
-            border-radius: 12px;
-            padding: 20px;
-            text-align: left;
-            min-height: 130px;
-        }
-
-        .message {
-            margin-bottom: 12px;
-        }
-
-        .label {
-            color: #4ddfff;
-            font-weight: bold;
-        }
-
-        .input-area {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        input {
-            flex: 1;
-            padding: 15px;
-            background: #080e15;
-            border: 1px solid #244653;
-            border-radius: 8px;
-            color: white;
-            outline: none;
-            font-size: 16px;
-        }
-
-        button {
-            padding: 15px 25px;
-            border: 1px solid #4ddfff;
-            background: #0a1820;
-            color: #8deaff;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        button:hover {
-            background: #102b36;
-            box-shadow: 0 0 15px rgba(77, 223, 255, 0.4);
+        .atlas-screen {
+            width: 100vw;
+            height: 100vh;
+            background-image: url("atlas-hud.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
     </style>
 </head>
 
 <body>
 
-<div class="container">
-
-    <h1>ATLAS</h1>
-
-    <div class="status">SYSTEM ONLINE</div>
-
-    <div class="orb"></div>
-
-    <div class="chat">
-
-        <div class="message">
-            <span class="label">ATLAS:</span>
-            Good afternoon. Systems are online.
-        </div>
-
-        <div class="message" id="response">
-            <span class="label">STATUS:</span>
-            Awaiting command.
-        </div>
-
-        <div class="input-area">
-            <input
-                id="command"
-                type="text"
-                placeholder="Enter command..."
-                onkeydown="if(event.key === 'Enter') sendCommand()"
-            >
-
-            <button onclick="sendCommand()">SEND</button>
-        </div>
-
-    </div>
-
-</div>
-
-<script>
-    function sendCommand() {
-
-        const input = document.getElementById("command");
-        const response = document.getElementById("response");
-
-        const command = input.value.trim();
-
-        if (!command) {
-            return;
-        }
-
-        response.innerHTML =
-            '<span class="label">YOU:</span> ' +
-            command +
-            '<br><br>' +
-            '<span class="label">ATLAS:</span> Command received.';
-
-        input.value = "";
-    }
-</script>
+    <div class="atlas-screen"></div>
 
 </body>
 </html>
